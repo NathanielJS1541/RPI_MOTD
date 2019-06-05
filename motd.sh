@@ -133,7 +133,7 @@ label5="$borderBar  $(color $statsLabelColor "Temperature...:") $label5$borderBa
 label6="$(extend expr "Freq: $(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq)/$1000 MHz")"
 label6="$borderBar  $(color $statsLabelColor "CPU...........:") $label6$borderBar"
 
-stats="$label1\n$label2\n$label3\n$label4\n$label5"
+stats="$label1\n$label2\n$label3\n$label4\n$label5\n$label6"
 
 # Print motd
-echo -e "$header\n$borderEmptyLine\n$greetings\n$borderEmptyLine\n$stats\n$borderEmptyLine\n$borderBottomLine"       
+echo -e "$header\n$borderEmptyLine\n$greetings\n$borderEmptyLine\n$stats\n$borderBottomLine" # Rmoved \n$borderEmptyLine
