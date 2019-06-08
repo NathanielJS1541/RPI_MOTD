@@ -11,7 +11,7 @@ https://github.com/gagle/raspberrypi-motd. Full credit goes to Gabriel Llamas (h
 
 The scriptis written in bash so requires no external packages to be installed.
 
-Last update: 05/06/2019 (DD/MM/YYYY)
+Last update: 08/06/2019 (DD/MM/YYYY)
 
 ## Installation
 
