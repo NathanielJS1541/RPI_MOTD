@@ -128,12 +128,14 @@ label4="$(extend "$(df -h ~ | awk 'NR==2 { printf "Total: %sB, Used: %sB, Free: 
 label4="$borderBar  $(color $statsLabelColor "Home space....:") $label4$borderBar"
 
 label5="$(extend "$(/opt/vc/bin/vcgencmd measure_temp | cut -c "6-9")ºC")"
-label5="$borderBar  $(color $statsLabelColor "Temperature...:") $label5$borderBar"
+label5="$borderBar  $(color $statsLabelColor "Temperature...:") $label5 $borderBar"
 
-label6="$(extend "$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq)/$1000 MHz")"
+rawFreq=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq)
+freq=$((rawFreq/1000))
+label6="$(extend "$freq MHz")"
 label6="$borderBar  $(color $statsLabelColor "CPU...........:") $label6$borderBar"
 
 stats="$label1\n$label2\n$label3\n$label4\n$label5\n$label6"
 
 # Print motd
-echo -e "$header\n$borderEmptyLine\n$greetings\n$borderEmptyLine\n$stats\n$borderBottomLine" # Rmoved \n$borderEmptyLine
+echo -e "$header\n$borderEmptyLine\n$greetings\n$stats\n$borderEmptyLine\n$borderBottomLine" # Rmoved \n$borderEmptyLine
