@@ -15,7 +15,7 @@ Last update: 05/06/2019 (DD/MM/YYYY)
 
 ## Installation
 
-Download and save the `motd.sh` bash script in the Raspberry Pi. Remember to add execution permissions and change the owner:
+Download and save the `motd.sh` bash script to the Raspberry Pi. It doesn't matter where it is. Remember to add execution permissions and change the owner:
 
 ```bash
 $ sudo chown root:root motd.sh
@@ -24,12 +24,22 @@ $ sudo chmod +x motd.sh
 
 The following steps may vary depending on the OS. Arch Linux ARM is assumed.
 
-- Autoexecute the script when the user logs in. There are multiple locations from where you can start the `motd.sh` script, for example using the `/etc/profile`. Save the `motd.sh` script in the directory `/etc/profile.d` and it will be executed after the login. More about [autostarting scripts](https://wiki.archlinux.org/index.php/Bash#Configuration_file_sourcing_order_at_startup).
+- Autoexecute the script when the user logs in. There are multiple locations from where you can start the `motd.sh` script, for example using the `/etc/profile`. More about [autostarting scripts](https://wiki.archlinux.org/index.php/Bash#Configuration_file_sourcing_order_at_startup).
+  - Edit .profile for the current user:
+    ```bash
+    $ nano ~/.profile
+    ```
+  - Add the path to the motd.sh file at the bottom, for example add:
+    ```bash
+	# MOTD Script
+	/home/nat/Documents/RPI_MOTD/motd.sh
+	```
+	to the end of the file.
 
-- Remove the default MOTD. It is located in `/etc/motd`.
+- Rename the default MOTD. It is located in `/etc/motd`.
   
   ```bash
-  $ sudo rm /etc/motd
+  $ sudo cp /etc/motd /etc/motd_OLD
   ```
   
 - Remove the "last login" information. Disable the `PrintLastLog` option from the `sshd` service. Edit the `/etc/ssh/sshd_config` file and uncomment the line `#PrintLastLog yes`:
@@ -53,7 +63,7 @@ The following steps may vary depending on the OS. Arch Linux ARM is assumed.
   Restart the `sshd` service:
   
   ```bash
-  $ sudo systemctl restart sshd
+  $ sudo service ssh restart
   ```
 
 ## Troubleshooting
