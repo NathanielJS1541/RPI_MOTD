@@ -3,7 +3,7 @@
 ## About
 
 <p align="center">
-  <img src="https://github.com/NathanielJS1541/RPI_MOTD/blob/master/demo.png?raw=true"/>
+  <img src="https://github.com/NathanielJS1541/RPI_MOTD/blob/master/demo.PNG"/>
 </p>
 
 This is a customised version of raspberrypi-motd. If you are looking to create your own custom MOTD, or if you are looking for the origional it is located at
